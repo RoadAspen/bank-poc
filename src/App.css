@@ -32,3 +32,13 @@
     transform: rotate(360deg);
   }
 }
+
+.ant-menu-item a{
+  color: rgba(255, 255, 255, 0.65)!important;
+}
+.ant-menu-item-active a{
+  color: rgba(255, 255, 255, 1)!important;
+}
+.ant-menu-item-selected a{
+  color: rgba(255, 255, 255, 1)!important;
+}
