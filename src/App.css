@@ -42,3 +42,15 @@
 .ant-menu-item-selected a{
   color: rgba(255, 255, 255, 1)!important;
 }
+
+.content-nav{
+  height:40;
+  border-bottom:1px solid #ddd;
+  list-style:none;
+}
+
+.create_people_input{
+  width: 140px!important;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
