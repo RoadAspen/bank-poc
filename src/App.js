@@ -32,22 +32,22 @@ class App extends React.Component {
 								<img src={logo} alt="康期股份" style={{ width: 140 }} />
 							</span>
 						</div>
-						<Menu theme="dark"  mode="inline">
+						<Menu theme="dark" mode="inline">
 							<Menu.Item key="1">
-								<Icon type="pie-chart" />
-								<span>
-									<NavLink to="/systemManage">
+								<NavLink to="/systemManage" style={{ display: 'block' }}>
+									<Icon type="pie-chart" />
+									<span>
 										系统用户管理
-                					</NavLink>
 								</span>
+								</NavLink>
 							</Menu.Item>
 							<Menu.Item key="2">
-								<Icon type="pie-chart" />
-								<span>
-									<NavLink to="/parameConfig">
+								<NavLink to="/parameConfig" style={{ display: 'block' }}>
+									<Icon type="pie-chart" />
+									<span>
 										参数配置
-                					</NavLink>
 								</span>
+								</NavLink>
 							</Menu.Item>
 							<SubMenu
 								key="sub1"
@@ -70,31 +70,31 @@ class App extends React.Component {
 								</Menu.Item>
 							</SubMenu>
 							<Menu.Item key="5">
-								<Icon type="file" />
-								<span>
-									<NavLink to="/statistics">
+								<NavLink to="/statistics" style={{ display: 'block' }}>
+									<Icon type="file" />
+									<span>
 										统计分析
-									</NavLink>
 								</span>
+								</NavLink>
 							</Menu.Item>
 						</Menu>
 					</Sider>
 					<Layout>
 						<Header style={{ background: '#fff', padding: 0 }} />
 						<Content style={{ margin: '30px 16px 0' }}>
-							<div style={{ padding: 24, background: '#fff', minHeight: '100%',paddingTop:8 }}>
+							<div style={{ padding: 24, background: '#fff', minHeight: '100%', paddingTop: 8 }}>
 								<Switch>
 									{/* 系统用户管理 */}
-									<Route path="/systemManage" component={SystemManage}/>
+									<Route path="/systemManage" component={SystemManage} />
 									{/* 参数配置 */}
-									<Route path="/parameConfig" component={ParameConfig}/>
+									<Route path="/parameConfig" component={ParameConfig} />
 									{/* 营销活动管理 */}
 									{/* 新建活动 */}
-									<Route path="/marketing/create" component={MarketingCreate}/>
+									<Route path="/marketing/create" component={MarketingCreate} />
 									{/* 活动管理 */}
-									<Route path="/marketing/manage" component={MarketingManage}/>
+									<Route path="/marketing/manage" component={MarketingManage} />
 									{/* 统计分析 */}
-									<Route path="/statistics" component={Statistics}/>
+									<Route path="/statistics" component={Statistics} />
 								</Switch>
 							</div>
 						</Content>

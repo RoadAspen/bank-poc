@@ -21,34 +21,41 @@ class MarketingManage extends React.Component {
                 key: 'name',
             },
             {
-                title: '活动起始时间',
+                title: '活动目标人群',
                 dataIndex: 'age',
                 key: 'age',
             },
             {
-                title: '活动结束日期',
+                title: '素材',
                 dataIndex: 'address',
                 key: 'address',
             },
             {
-                title: '名单',
+                title: '活动流程',
                 dataIndex: 'sex',
                 key: 'sex',
             },
             {
-                title: '触达',
+                title: '活动产品',
                 dataIndex: 'behavior',
                 key: 'behavior',
             },
             {
-                title: '成功数量',
+                title: '活动权益',
                 dataIndex: 'rank',
                 key: 'rank',
             },
             {
-                title: '成功率',
+                title: '活动效果接口',
                 dataIndex: 'rank',
                 key: 'rank',
+            },
+            {
+                title: '操作',
+                dataIndex: 'rank',
+                render(){
+                    return <Button type="primary">修改</Button>
+                }
             },
         ]
         return (
@@ -59,16 +66,6 @@ class MarketingManage extends React.Component {
                             <Col span={24}>
                                 <span style={{marginRight:10}}>活动ID</span>
                                 <Input placeholder="输入活动ID" style={{width:200,marginRight:10}}/>
-                                <span style={{marginRight:10}}>渠道类型</span>
-                                <Select allowClear={true} style={{width:200,marginRight:10}}>
-                                    <Option value="渠道一">渠道一</Option>
-                                    <Option value="渠道二">渠道二</Option>
-                                </Select>
-                                <span style={{marginRight:10}}>机构</span>
-                                <Select allowClear={true} style={{width:200,marginRight:10}}>
-                                    <Option value="交通银行上海分行">交通银行上海分行</Option>
-                                    <Option value="工商银行浦江支行">工商银行浦江支行</Option>
-                                </Select>
                                 <Button type="primary">检索</Button>
                             </Col>
                         </Row>
