@@ -42,23 +42,23 @@ class SystemManage extends React.Component {
                 name: '系统管理员',
                 sex: '男',
                 role: '系统管理员',
-                jurisdiction: [' 用户管理', ' 参数配置', ' 营销活动管理', ' 统计分析'],
+                jurisdiction: ['用户管理', '参数配置', '营销活动管理', '统计分析'],
                 email: 'admin@kq300061.com'
             },
             {
-                key: 0,
+                key: 1,
                 name: '王占朋',
                 sex: '男',
                 role: '用户管理员',
-                jurisdiction: [' 用户管理'],
+                jurisdiction: ['用户管理'],
                 email: 'zhanpeng.wang@kq300061.com'
             },
             {
-                key: 1,
+                key: 2,
                 name: '孔甲',
                 sex: '女',
                 role: '活动管理员',
-                jurisdiction: [' 参数配置', ' 营销活动管理', ' 统计分析'],
+                jurisdiction: ['参数配置', '营销活动管理', '统计分析'],
                 email: 'jia.kong@kq300061.com'
             }
         ];
@@ -82,6 +82,15 @@ class SystemManage extends React.Component {
                 title: '权限',
                 dataIndex: 'jurisdiction',
                 key: 'jurisdiction',
+                render(text,record,index){
+                    return (
+                        <span>
+                            {
+                                record.jurisdiction.join('、')
+                            }
+                        </span>
+                    )
+                }
             },
             {
                 title: '邮箱',

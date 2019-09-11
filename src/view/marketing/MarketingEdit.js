@@ -2,19 +2,19 @@
  * 活动创建
  */
 import React from 'react';
-import { Tabs, Upload, Button, Row, Col, Icon, Select, Input, Cascader, Table, message } from 'antd';
+import { Tabs, Upload, message, Button, Row, Col, Icon, Select, Input, Cascader, Table, Card, Modal } from 'antd';
 import cityoptions from './city';
+import history from '../../history';
 const { TabPane } = Tabs;
 const { Option } = Select;
-
-class MarketingCreate extends React.Component {
+const { Meta } = Card;
+class MarketingEdit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            people: 'file',
+            people: 'search',
             peopledataSource: [],
-            fileList: [],
-            uploading: false,
+            visible: false
         }
     }
     peoplechange = (value) => {
@@ -28,8 +28,25 @@ class MarketingCreate extends React.Component {
     onCascaderChange = (value) => {
         console.log(value)
     }
+    onBack = () => {
+        history.push("/marketing/manage");
+    }
     createActive = () => {
-        message.success("活动创建成功");
+        message.success("活动更新成功");
+    }
+    materialClick = () => {
+        this.setState(() => {
+            return {
+                visible: true
+            }
+        })
+    }
+    handleCancel = () => {
+        this.setState(() => {
+            return {
+                visible: false
+            }
+        })
     }
     render() {
         // 上传 按钮
@@ -53,7 +70,6 @@ class MarketingCreate extends React.Component {
             },
             fileList,
         };
-
         // 活动人群表
         const peopledataSource = [
             {
@@ -69,43 +85,43 @@ class MarketingCreate extends React.Component {
                 id: '2',
                 name: '靳东',
                 age: 42,
-                address: '江苏南京',
+                address: '浙江杭州',
                 sex: '男',
-                behavior: '美食',
-                rank: '黄金'
+                behavior: '旅游',
+                rank: '铂金'
             },
             {
                 id: '3',
                 name: '姜维',
                 age: 29,
-                address: '安徽芜湖',
+                address: '浙江杭州',
                 sex: '男',
-                behavior: '电子产品',
-                rank: '钻石'
+                behavior: '旅游',
+                rank: '铂金'
             },
             {
                 id: '4',
                 name: '宋茜',
                 age: 25,
-                address: '江苏苏州',
+                address: '浙江杭州',
                 sex: '女',
                 behavior: '旅游',
-                rank: '白银'
+                rank: '铂金'
             },
             {
                 id: '5',
                 name: '万向',
                 age: 33,
-                address: '安徽马鞍山',
+                address: '浙江杭州',
                 sex: '女',
                 behavior: '旅游',
-                rank: '黄金'
+                rank: '铂金'
             },
             {
                 id: '6',
                 name: '钱小凤',
                 age: 34,
-                address: '浙江宁波',
+                address: '浙江杭州',
                 sex: '女',
                 behavior: '旅游',
                 rank: '铂金'
@@ -114,10 +130,10 @@ class MarketingCreate extends React.Component {
                 id: '7',
                 name: '李军',
                 age: 54,
-                address: '安徽安庆',
+                address: '浙江杭州',
                 sex: '男',
                 behavior: '旅游',
-                rank: '白银'
+                rank: '铂金'
             },
         ];
         // 活动人群列表
@@ -147,14 +163,19 @@ class MarketingCreate extends React.Component {
                 dataIndex: 'rank',
             },
         ];
+
         return (
             <>
+                <Button type="default" onClick={this.onBack}>
+                    <Icon type="left" />
+                    返回
+                </Button>
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="活动目标人群" key="1">
                         <Row gutter={16} style={{ marginBottom: 30 }}>
                             <Col span={24} style={{ lineHeight: '32px' }}>
                                 活动名称：
-                                <Input placeholder="输入活动名称 " style={{ width: 200 }} />
+                                <Input placeholder="输入活动名称 " style={{ width: 200 }} defaultValue="信用卡激活" />
                             </Col>
                         </Row>
                         <Row gutter={16} style={{ marginBottom: 30 }}>
@@ -183,27 +204,26 @@ class MarketingCreate extends React.Component {
                                 (
                                     <Row gutter={16}>
                                         <Col span={24}>
-                                            年龄：<Input placeholder="下限" type="number" style={{ width: 80 }} />
+                                            年龄：<Input placeholder="下限" type="number" style={{ width: 80 }} defaultValue={20} />
                                             ~
-                                            <Input placeholder="上限" type="number" style={{ width: 80, marginRight: 5 }} />
-                                            性别：<Select placeholder="性别" className="create_people_input" allowClear={true}>
+                                            <Input placeholder="上限" type="number" style={{ width: 80, marginRight: 5 }} defaultValue={60} />
+                                            性别：<Select placeholder="全部" className="create_people_input" allowClear={true}>
                                                 <Option value="男">男</Option>
                                                 <Option value="女">女</Option>
                                             </Select>
                                             地区：<Cascader
-                                                defaultValue=""
+                                                defaultValue={['zhejiang', 'hangzhou', 'xihu']}
                                                 options={cityoptions}
                                                 allowClear={true}
                                                 onChange={this.onCascaderChange}
                                                 style={{ width: 200, marginRight: 5 }}
-                                                placeholder="筛选地区"
                                             />
-                                            行为偏好：<Select placeholder="行为偏好" className="create_people_input" allowClear={true}>
+                                            行为偏好：<Select placeholder="行为偏好" defaultValue="旅游" className="create_people_input" allowClear={true}>
                                                 <Option value="旅游">旅游</Option>
                                                 <Option value="美食">美食</Option>
                                                 <Option value="电子产品">电子产品</Option>
                                             </Select>
-                                            等级：<Select placeholder="等级" className="create_people_input" allowClear={true}>
+                                            等级：<Select placeholder="等级" defaultValue="铂金" className="create_people_input" allowClear={true}>
                                                 <Option value="钻石">钻石</Option>
                                                 <Option value="铂金">铂金</Option>
                                                 <Option value="黄金">黄金</Option>
@@ -221,22 +241,39 @@ class MarketingCreate extends React.Component {
                     </TabPane>
                     <TabPane tab="素材管理" key="2">
                         <Row>
-                            <Col span={24} style={{ marginTop: 50 }}>
-                                添加素材：
-                                        <Upload {...uploadprops} style={{ width: 200 }}>
+                            <Col span={24}>
+                                <Card title="已有素材" style={{ width: '100%' }}>
+                                    <Card
+                                        hoverable
+                                        style={{ width: 240 }}
+                                        cover={<img alt="example" src={require('../../assets/img/sucai.png')} onClick={this.materialClick} />}
+                                    >
+                                        <Meta title="活动素材" description="清晰展示活动产品优势" />
+                                    </Card>
+                                    <Modal
+                                        title="H5页面预览"
+                                        visible={this.state.visible}
+                                        onCancel={this.handleCancel}
+                                        footer={null}
+                                    >
+                                        <iframe src="./active_h5/index.html" title="h5" frameBorder="0" style={{ border: 0, width: "100%", height: 630 }} />
+                                    </Modal>
+                                </Card>
+                            </Col>
+                            <Col span={24} style={{marginTop:50}}>
+                                新增素材：
+                                <Upload {...uploadprops} style={{ width: 200 }}>
                                     <Button>
                                         <Icon type="upload" /> 点击上传
-                                                </Button>
+                                    </Button>
                                 </Upload>
                             </Col>
                         </Row>
-
                     </TabPane>
                     <TabPane tab="活动流程" key="3">
-                        {/* <iframe src="http://ggeditor.com/demo/#/flow" frameborder="0" title="活动流程图" style={{width:'100%',height:600}}/> */}
                         <Row>
                             <Col style={{ textAlign: 'center' }} span={24}>
-                                <img src={require('../../assets/img/create_active_flow.png')} width="100%" alt="" />
+                                <img src={require('../../assets/img/active_flow.png')} width="100%" alt="" />
                             </Col>
                         </Row>
                     </TabPane>
@@ -249,8 +286,9 @@ class MarketingCreate extends React.Component {
                                 <Select
                                     mode="multiple"
                                     style={{ width: '100%' }}
-                                    placeholder="选择活动渠道"
-                                    defaultValue={[]}
+                                    placeholder="选择活动产品"
+                                    defaultValue={['微信公众号', '短信']}
+                                    onChange={this.productChange}
                                     showSearch={true}
                                 >
                                     <Option value="微信公众号">微信公众号</Option>
@@ -267,7 +305,9 @@ class MarketingCreate extends React.Component {
                                 <Select
                                     // mode="multiple"
                                     style={{ width: '100%' }}
-                                    placeholder="选择活动周期"
+                                    placeholder="选择活动产品"
+                                    value="按周"
+                                    onChange={this.productChange}
                                     showSearch={true}
                                 >
                                     <Option value="按周">按周</Option>
@@ -286,7 +326,8 @@ class MarketingCreate extends React.Component {
                                     mode="multiple"
                                     style={{ width: '100%' }}
                                     placeholder="选择活动产品"
-                                    defaultValue={[]}
+                                    defaultValue={['1', '2']}
+                                    onChange={this.productChange}
                                     showSearch={true}
                                 >
                                     <Option value="1">太阳全利卡</Option>
@@ -305,7 +346,8 @@ class MarketingCreate extends React.Component {
                                     mode="multiple"
                                     style={{ width: '100%' }}
                                     placeholder="选择活动权益"
-                                    defaultValue={[]}
+                                    defaultValue={['爱奇艺会员卡', '美团优惠券']}
+                                    onChange={this.productChange}
                                     showSearch={true}
                                 >
                                     <Option value="爱奇艺会员卡">爱奇艺会员卡</Option>
@@ -316,39 +358,22 @@ class MarketingCreate extends React.Component {
                         </Row>
                         <Row gutter={16} style={{ marginBottom: 10 }}>
                             <Col span={8}>
-                                营销话术
-                            </Col>
-                            <Col span={16}>
-                                <Select
-                                    mode="multiple"
-                                    style={{ width: '100%' }}
-                                    placeholder="选择营销话术"
-                                    defaultValue={[]}
-                                    showSearch={true}
-                                >
-                                    <Option value="营销话术一">营销话术一</Option>
-                                    <Option value="营销话术二">营销话术二</Option>
-                                </Select>
-                            </Col>
-                        </Row>
-                        <Row gutter={16} style={{ marginBottom: 10 }}>
-                            <Col span={8}>
                                 活动效果接口
                             </Col>
                             <Col span={16}>
-                                根据 表<Select placeholder="输入字段" style={{ width: 100, marginLeft: 5, marginRight: 5 }} defaultValue="">
+                                根据 表<Select placeholder="输入字段" style={{ width: 100, marginLeft: 5, marginRight: 5 }} defaultValue="success">
                                     <Option value="success">success</Option>
                                     <Option value="reach">reach</Option>
                                     <Option value="list">list</Option>
                                 </Select>中的
-                                <Input placeholder="输入字段" style={{ width: 100, marginLeft: 5, marginRight: 5 }} defaultValue={`response`} />字段 判断，
-                                成功为<Input placeholder="输入字段" style={{ width: 50, marginLeft: 5, marginRight: 5 }} defaultValue={`Y`} />，
-                                不成功为<Input placeholder="输入字段" style={{ width: 50, marginLeft: 5, marginRight: 5 }} defaultValue={`N`} />
+                                <Input placeholder="输入字段" style={{ width: 100, marginLeft: 5, marginRight: 5 }} value={`response`} />字段判断，
+                                成功为<Input placeholder="输入字段" style={{ width: 50, marginLeft: 5, marginRight: 5 }} value={`Y`} />，
+                                不成功为<Input placeholder="输入字段" style={{ width: 50, marginLeft: 5, marginRight: 5 }} value={`N`} />
                             </Col>
                         </Row>
                         <Row style={{ marginTop: 50 }}>
                             <Col span={24} style={{ textAlign: 'center' }}>
-                                <Button type="primary" onClick={this.createActive}>确定创建</Button>
+                                <Button type="primary" onClick={this.createActive}>确定更新</Button>
                             </Col>
                         </Row>
                     </TabPane>
@@ -358,4 +383,4 @@ class MarketingCreate extends React.Component {
     }
 }
 
-export default MarketingCreate;
+export default MarketingEdit;

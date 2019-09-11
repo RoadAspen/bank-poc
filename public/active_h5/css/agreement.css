@@ -1,0 +1,23 @@
+.agreement-content {
+	font-size: 14px;
+	color: #333;
+	line-height: 25px;
+	padding: 10px 20px 20px 20px;
+}
+.item{
+	/*margin-top: 10px;*/
+	text-indent: 2em;
+	text-align: justify;
+}
+.bold-weight{
+	font-weight:bold;
+}
+.no-text-indent {
+	text-indent: 0;
+}
+.agreement-header {
+	font-weight: bold;
+	font-size: 18px;
+	padding: 10px;
+	text-align: center;
+}

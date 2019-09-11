@@ -1,0 +1,92 @@
+/*公共样式*/
+html, body, div, p, span, img, i, em, b, strong, ins, del,
+dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,
+title, header, nav, main, article, section, aside, footer,
+table, caption, thead, tbody, th, td,
+form, label, input, textarea, button, select, option,
+::before, ::after {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  color: #333;
+  font-size: 14px;
+  font-family: "Helvetica", "MicroSoft YaHei", "sans-serif";
+	background: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-size: 100%;
+}
+
+i, em, b, strong, ins, del {
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+input, textarea, button {
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+a:link, a:visited {
+  color: #6a6a6a;
+  text-decoration: none;
+}
+
+a:hover {
+  /*color: #ffba00;*/
+  text-decoration: none;
+}
+
+.clearfix:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.por {
+  position: relative;
+}
+
+.poa {
+  position: absolute;
+}
+
+.pof {
+  position: fixed;
+}

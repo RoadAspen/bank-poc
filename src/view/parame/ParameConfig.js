@@ -158,7 +158,15 @@ class ParameConfig extends React.Component {
                                         <Option value="1">太阳全利卡</Option>
                                         <Option value="2">太阳全飞卡</Option>
                                         <Option value="3">太阳全乐卡</Option>
-                                        <Option value="3">太阳全行卡</Option>
+                                        <Option value="4">太阳全行卡</Option>
+                                    </Select>
+                                </Form.Item>
+                                <Form.Item label="币种">
+                                    <Select defaultValue="1">
+                                        <Option value="1">人民币</Option>
+                                        <Option value="2">美元</Option>
+                                        <Option value="3">欧元</Option>
+                                        <Option value="3">韩元</Option>
                                     </Select>
                                 </Form.Item>
                                 <div style={{ textAlign: "center" }}>

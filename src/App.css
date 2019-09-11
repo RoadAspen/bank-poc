@@ -1,4 +1,5 @@
 @import '~antd/dist/antd.css';
+
 .App {
   text-align: center;
 }
@@ -28,29 +29,125 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.ant-menu-item a{
-  color: rgba(255, 255, 255, 0.65)!important;
-}
-.ant-menu-item-active a{
-  color: rgba(255, 255, 255, 1)!important;
-}
-.ant-menu-item-selected a{
-  color: rgba(255, 255, 255, 1)!important;
+.ant-menu-item a {
+  color: rgba(255, 255, 255, 0.65) !important;
 }
 
-.content-nav{
-  height:40;
-  border-bottom:1px solid #ddd;
-  list-style:none;
+.ant-menu-item-active a {
+  color: rgba(255, 255, 255, 1) !important;
 }
 
-.create_people_input{
-  width: 140px!important;
+.ant-menu-item-selected a {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.content-nav {
+  height: 40;
+  border-bottom: 1px solid #ddd;
+  list-style: none;
+}
+
+.create_people_input {
+  width: 140px !important;
   margin-right: 5px;
   margin-bottom: 10px;
 }
+
+/* 统计分析树状图 显示框*/
+.statistics_tree_title,
+.statistics_tree_left,
+.statistics_tree_right,
+.statistics_tree_left_left,
+.statistics_tree_left_right {
+  width: 200px;
+  height: 70px;
+  border: 2px solid #ddd;
+  position: absolute;
+  z-index: 99;
+  left: 50%;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
+.statistics_tree_title {
+  top: 50px;
+  margin-left: -100px;
+}
+
+.statistics_tree_left,
+.statistics_tree_right {
+  top: 200px;
+}
+
+.statistics_tree_left {
+  margin-left: -300px;
+}
+
+.statistics_tree_right {
+  margin-left: 100px;
+}
+
+.statistics_tree_left_left,
+.statistics_tree_left_right {
+  top: 350px;
+}
+
+.statistics_tree_left_left {
+  margin-left: -500px;
+}
+
+.statistics_tree_left_right {
+  margin-left: -100px;
+}
+
+/* 竖向 连接线 */
+.statistics_tree_title_line_cloumn,
+.statistics_tree_left_line_cloumn {
+  height: 30px;
+  width: 0;
+  border-left: 2px solid #ddd;
+  position: absolute;
+  z-index: 98;
+  left: 50%;
+}
+
+.statistics_tree_title_line_cloumn {
+  top: 120px;
+  margin-left: -1px;
+}
+
+.statistics_tree_left_line_cloumn {
+  top: 270px;
+  margin-left: -200px;
+}
+
+/* 横向连接线 */
+.statistics_tree_title_line_row,
+.statistics_tree_left_line_row {
+  height: 50px;
+  width: 400px;
+  border-top: 2px solid #dddddd;
+  border-left: 2px solid #dddddd;
+  border-right: 2px solid #dddddd;
+  position: absolute;
+  z-index: 98;
+  left: 50%;
+}
+
+.statistics_tree_title_line_row {
+  top: 150px;
+  margin-left: -200px;
+}
+
+.statistics_tree_left_line_row {
+  top: 300px;
+  margin-left: -400px;
+}
+
+/* */
