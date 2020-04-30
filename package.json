@@ -11,7 +11,7 @@
     "electron": "^6.0.8",
     "gg-editor": "^3.0.0-beta.0",
     "history": "^4.9.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsplumb": "^2.11.2",
     "jsplumb-react": "^0.0.27",
     "mockjs": "^1.0.1-beta3",
